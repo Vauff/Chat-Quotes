@@ -1,5 +1,12 @@
 <?php 
-require('api.php');
+	require('api.php');
+	
+	if(!isset($_GET['page']))
+	{
+		$_GET['page'] = 1;
+	}
+	
+	$page = $_GET['page'];
 ?>
 
 <!DOCTYPE html>
@@ -66,6 +73,16 @@ require('api.php');
 				     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 				        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 			}
+			
+			.centered
+			{
+				text-align: center;
+			}
+			
+			a
+			{
+				text-decoration: none !important;
+			}
         </style>
         <meta charset="UTF-8">
         <title>IRC Quotes</title>
@@ -84,16 +101,17 @@ require('api.php');
 	            	<button class="btn btn-primary btn-sm" type="submit"><span class="glyphicon glyphicon-search"></span>  Search</button>
 	            </form>
                 <hr>
+                <div class="centered"><?php require('pageselector.php');?></div>
+                <br>
                 <?php
-                	$mysql = getMysql();
-                	$total = $mysql->query("SELECT COUNT(id) AS id FROM quotes")->fetch_assoc()['id'];
-                	$quotes = $mysql->query("SELECT * FROM quotes WHERE id>=".($total - 9)." AND id<=".$total." ORDER BY id DESC");
+                	$firstQuoteID = 10 * ($pages - $page + 1);
+                	$secondQuoteID = $firstQuoteID > 9 ? $firstQuoteID - 9 : 0;
+                	$quotes = $mysql->query("SELECT * FROM quotes WHERE id>=".$secondQuoteID." AND id<=".$firstQuoteID." AND approved=1 ORDER BY id DESC");
                 	
                 	while($quote = $quotes->fetch_assoc())
                 	{
                 		$id = $quote['id'];
-                		$time = $quote['time'];
-                		$ordinal = getOrdinal(date('j', $time));?>
+                		$time = $quote['time'];?>
                 		<div class="quote">
                 			<h4><a href="viewquote.php?id=<?php echo $id;?>"><b>#<?php echo $id;?> - <?php echo $quote['title'];?></b></a></h4>
                 			<h5><b>Submitter:</b> <?php echo $quote['submitter']?> - <b>Date:</b> <?php echo gmdate('l F jS, Y, g:i A T', $time);?></h5>
@@ -106,6 +124,8 @@ require('api.php');
                 		</div>
                 		<br>
                 <?php }?>
+                <br>
+                <div class="centered"><?php require('pageselector.php');?></div>
             </div>
         </div>
     </body>
