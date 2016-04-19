@@ -7,9 +7,17 @@
 	}
 	
 	$page = $_GET['page'];
-	
-	require('header.php');
+	$_SESSION['pageTitle'] = "IRC Quotes";
+	$_SESSION['currentHeader'] = 1;
 ?>
+<!DOCTYPE html>
+<html>
+	<?php require('header.php');?>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+            	<?php $_SESSION['currentHeader'] = 2;
+            		  require('header.php');?>
                 <div class="centered"><?php require('pageselector.php');?></div>
                 <br>
                 <?php
@@ -22,7 +30,7 @@
                 		$id = $quote['id'];
                 		$time = $quote['time'];?>
                 		<div class="quote">
-                			<h4><a href="viewquote.php?id=<?php echo $id;?>"><b>#<?php echo $id;?> - <?php echo $quote['title'];?></b></a></h4>
+                			<h4><a href="viewquote.php?id=<?php echo $page == 1 ? $id : $id."&page=".$page;?>"><b>#<?php echo $id;?> - <?php echo $quote['title'];?></b></a></h4>
                 			<h5><b>Submitter:</b> <?php echo $quote['submitter']?> - <b>Date:</b> <?php echo gmdate('l F jS, Y, g:i A T', $time);?></h5>
                 			<h6><?php echo nl2br(formatQuote($quote['quote'], array(
                 					array('<', '&lt;'),
