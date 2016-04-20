@@ -1,5 +1,5 @@
 <h4>
-	<?php echo $page > 1 ? "<a href=\"index.php?page=".($page - 1)."\">" : ""?>
+	<?php echo $page > 1 ? "<a href=\"index.php".($page - 1 == 1 ? "" : "?page=".($page - 1))."\">" : ""?>
 		<button class="btn btn-info<?php echo $page <= 1 ? " disabled" : "";?>"><span class="glyphicon glyphicon-arrow-left"></span></button>
 	<?php echo $page > 1 ? "</a>" : "";
 		
@@ -12,6 +12,10 @@
 			if($i == $page)
 			{
 				echo $i." ";
+			}
+			else if($i == 1)
+			{
+				echo "<a href=\"index.php\">".$i."</a> ";
 			}
 			else
 			{

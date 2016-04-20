@@ -31,12 +31,7 @@
 	                <div class="quote">
 	                	<h4><b><font color="337ab7">#<?php echo $id;?> - <?php echo $quote['title'];?></font></b></h4>
 	                	<h5><b>Submitter:</b> <?php echo $quote['submitter']?> - <b>Date:</b> <?php echo gmdate('l F jS, Y, g:i A T', $time);?></h5>
-	                	<h6><?php echo nl2br(formatQuote($quote['quote'], array(
-	                			array('<', '&lt;'),
-	                			array('>', '&gt;'),
-	                			array('°', '&deg;'),
-	                			array('³', '&sup3;')
-	                	)));?>
+	                	<h6><?php echo nl2br(htmlentities($quote['quote'], ENT_COMPAT, "ISO-8859-15"));?>
 	                </h6>
                 </div>
             </div>
