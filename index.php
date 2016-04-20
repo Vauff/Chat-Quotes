@@ -18,6 +18,9 @@
             <div class="jumbotron">
             	<?php $_SESSION['currentHeader'] = 2;
             		  require('header.php');?>
+            	<?php if(isset($_GET['submitted']) && $_GET['submitted'] == "true"){?>
+            		<div class="centered"><font color="green"><span class="glyphicon glyphicon-ok"></span> Thank you for submitting! Your quote will be reviewed as soon as possible.</font></div>
+            	<?php }?>
                 <div class="centered"><?php require('pageselector.php');?></div>
                 <br>
                 <?php

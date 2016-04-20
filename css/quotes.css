@@ -20,11 +20,6 @@ h1
     font-size: 48px !important;
 }
 
-h3
-{
-	text-align: center;
-}
-
 .quote > h4
 {
 	font-size: 30px !important;
@@ -64,6 +59,11 @@ h3
 	text-align: center;
 }
 
+.underlined
+{
+	text-decoration: underline;
+}
+
 a
 {
 	text-decoration: none !important;
@@ -82,4 +82,9 @@ a
 	top: -10%;
 	left: 25%;
 	z-index: 1;
+}
+
+textarea
+{
+	resize: vertical;
 }
