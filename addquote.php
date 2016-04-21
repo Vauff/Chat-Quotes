@@ -22,17 +22,38 @@
             	<h4><b>If I find that it is needed, I will edit your quote to be in line with the rules.</b></h4>
             	<hr>
             	<div class="centered">
-            		<form action="submit.php">
-	            		<label>Enter your name here:</label><br><br>
-						<input class="form-control" name="nick" type="text" placeholder="Nickname"><br><br><br>
-	            		<label>Enter the title of your quote here:</label><br><br>
-						<input class="form-control" name="title" type="text" placeholder="Title"><br><br><br>
-						<label>Enter the quote here:</label>
-						<textarea class="form-control" name="quote" placeholder="Quote" rows="10"></textarea><br>
+            		<form id="form">
+	            		<label>Enter your name here:</label><br>
+						<input id="nick" style="width: 50%; display: inline-block;" class="form-control" name="nick" type="text" placeholder="Nickname"><br><br><br>
+	            		<label>Enter the title of your quote here:</label><br>
+						<input id="title" style="width: 50%; display: inline-block;" class="form-control" name="title" type="text" placeholder="Title"><br><br><br>
+						<label>Enter the quote here:</label><br>
+						<textarea id="quote" style="width: 50%; display: inline-block;" class="form-control" name="quote" placeholder="Quote" rows="10"></textarea><br><br>
+						<div id="errorLabel"></div><br>
 						<button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-ok"></span> Submit</button>
 					</form>
 				</div>
             </div>
         </div>
     </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#form").submit(function(e){
+				e.preventDefault();
+
+				$.post("submit.php", {nick: $("#nick").val(), title: $("#title").val(), quote: $("#quote").val()}, function(data){
+					if(data == true)
+					{
+						location.href = "index.php?submitted=true";
+					}
+					else
+					{
+							document.getElementById("errorLabel").innerHTML = "<span class=\"label label-danger\">" + data + "</span>";
+					}
+				});
+			});
+		});
+	</script>
 </html>

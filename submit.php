@@ -2,6 +2,12 @@
 	require("api.php");
 	$mysql = getMysql();
 	
-	$mysql->query("INSERT INTO quotes (title, submitter, approved, quote, time) VALUES ('".$mysql->real_escape_string($_GET['title'])."', '".$mysql->real_escape_string($_GET['nick'])."', '0', '".$mysql->real_escape_string($_GET['quote'])."', '".$mysql->real_escape_string(time())."')");
-	header("Location: index.php?submitted=true");
+	if($_POST['title'] == null || $_POST['quote'] == null || $_POST['nick'] == null)
+	{
+		echo "You did not fill out everything.";
+		return;
+	}
+
+	$mysql->query("INSERT INTO quotes (title, submitter, approved, quote, time) VALUES ('".$mysql->real_escape_string($_POST['title'])."', '".$mysql->real_escape_string($_POST['nick'])."', '0', '".$mysql->real_escape_string($_POST['quote'])."', '".$mysql->real_escape_string(time())."')");
+	echo true;
 ?>
