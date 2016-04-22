@@ -7,7 +7,7 @@
 	}
 	
 	$page = $_GET['page'];
-	$_SESSION['pageTitle'] = "IRC Quotes";
+	$_SESSION['pageTitle'] = "IRC Quotes: Page #".$page;
 	$_SESSION['currentHeader'] = 1;
 ?>
 <!DOCTYPE html>

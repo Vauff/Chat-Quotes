@@ -78,13 +78,29 @@ a
 {
 	position: absolute;
 	width: 50%;
-	height: 100%;
+	height: 120%;
 	top: -10%;
 	left: 25%;
 	z-index: 1;
 }
 
+#link button
+{
+	position: absolute;
+	right: 10px;
+	top: 75%;
+}
+
 textarea
 {
 	resize: vertical;
+}
+
+.jumbotron
+{
+	padding-top: 10px;
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+	color: inherit;
+	background-color: #eee;
 }
