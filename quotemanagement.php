@@ -25,7 +25,15 @@
             	<?php }?>
                 <br>
                 <?php
-                	$quotes = getMysql()->query("SELECT * FROM quotes WHERE approved=0 ORDER BY id ASC");
+                	$mysql = getMysql();
+                	
+                	if($mysql->query("SELECT COUNT(id) AS id FROM quotes WHERE approved=0 ORDER BY id ASC")->fetch_assoc()['id'] == 0)
+                	{
+                		echo '<div class="centered"><font color="red"><span class="glyphicon glyphicon-remove"></span> There are no pending quotes!</font></div>';
+                		return;
+                	}
+                	
+                	$quotes = $mysql->query("SELECT * FROM quotes WHERE approved=0 ORDER BY id ASC");
                 	
                 	while($quote = $quotes->fetch_assoc())
                 	{

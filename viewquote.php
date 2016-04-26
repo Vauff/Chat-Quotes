@@ -27,7 +27,11 @@
             		  require('header.php');?>
                	<?php 
 	                $time = $quote['time'];?>
-	                <a href="index.php<?php echo $_GET['page'] == 1 ? "" : "?page=".$_GET['page']?>"><button class="btn btn-warning btn-md"><span class="glyphicon glyphicon-arrow-left"></span> Back</button></a>
+		            <button class="btn btn-warning btn-md" onclick="location.href='index.php<?php echo $_GET['page'] == 1 ? "" : "?page=".$_GET['page']?>'"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
+	                <?php if(isset($_SESSION['username']) && $_SESSION['username'] == "Vauff")
+	                	  {?>
+		            		<button class="btn btn-info" onclick="location.href='editquote.php?id=<?php echo $id;?>'"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+		            <?php }?>
 	                <br><br>
 	                <div class="quote">
 	                	<h4><b><font color="337ab7">#<?php echo $id;?> - <?php echo $quote['title'];?></font></b></h4>
