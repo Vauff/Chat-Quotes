@@ -16,7 +16,16 @@
 	$id = $_GET['id'];
 	$quote = getMysql()->query("SELECT * FROM quotes WHERE id=".$id)->fetch_assoc();
 	$_SESSION['pageTitle'] = "IRC Quotes: Edit quote #".$id;
-	$_SESSION['currentHeader'] = 1;?>
+	$_SESSION['currentHeader'] = 1;
+	
+	if($_SESSION['editType'] == "view")
+	{
+		$_SESSION['editType'] = "viewquote.php?id=".$id;
+	}
+	else if($_SESSION['editType'] == "qman")
+	{
+		$_SESSION['editType'] == "quotemanagement.php";
+	}?>
 <!DOCTYPE html>
 <html>
 	<?php require('header.php');?>
@@ -26,7 +35,7 @@
             	<?php $_SESSION['currentHeader'] = 2;
             		  require('header.php');
                		  $time = $quote['time'];?>
-	               <button class="btn btn-warning btn-md" onclick="location.href='quotemanagement.php'"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
+	               <button class="btn btn-warning btn-md" onclick="location.href='<?php echo $_SESSION['editType']?>'"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
                 <br><br>
 	            <form id="form">
             		<label for="id">ID:</label><label style="padding-left: 30px;" for="title">Title:</label><br>

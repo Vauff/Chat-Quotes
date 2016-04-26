@@ -16,7 +16,8 @@
 	$id = $_GET['id'];
 	$quote = getMysql()->query("SELECT * FROM quotes WHERE id=".$id)->fetch_assoc();
 	$_SESSION['pageTitle'] = "IRC Quotes: #".$id." - ".$quote['title'];
-	$_SESSION['currentHeader'] = 1;?>
+	$_SESSION['currentHeader'] = 1;
+	$_SESSION['editType'] = "view";?>
 <!DOCTYPE html>
 <html>
 	<?php require('header.php');?>
