@@ -1,4 +1,5 @@
 <?php 
+	session_start();
 	require('api.php');
 	
 	$_SESSION['pageTitle'] = "IRC Quotes: Add Quote";
@@ -50,7 +51,7 @@
 					}
 					else
 					{
-							document.getElementById("errorLabel").innerHTML = "<span class=\"label label-danger\">" + data + "</span>";
+						document.getElementById("errorLabel").innerHTML = "<span class=\"label label-danger\">" + data + "</span>";
 					}
 				});
 			});

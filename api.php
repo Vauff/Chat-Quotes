@@ -22,4 +22,9 @@
 		
 		return $quote;
 	}
+	
+	function isVauff()
+	{
+	    return gethostname() == "bl4ckscor3"; //insert hostaddress here
+	}
 ?>

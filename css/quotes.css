@@ -84,7 +84,14 @@ a
 	z-index: 1;
 }
 
-#link button
+#link button#qm
+{
+	position: absolute;
+	right: 10px;
+	top: 25%;
+}
+
+#link button#add
 {
 	position: absolute;
 	right: 10px;
