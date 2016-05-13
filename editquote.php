@@ -18,13 +18,13 @@
 	$_SESSION['pageTitle'] = "IRC Quotes: Edit quote #".$id;
 	$_SESSION['currentHeader'] = 1;
 	
-	if($_SESSION['editType'] == "view")
+	if($_SESSION['type'] == "view")
 	{
-		$_SESSION['editType'] = "viewquote.php?id=".$id;
+		$_SESSION['type'] = "viewquote.php?id=".$id;
 	}
-	else if($_SESSION['editType'] == "qman")
+	else if($_SESSION['type'] == "qman")
 	{
-		$_SESSION['editType'] == "quotemanagement.php";
+		$_SESSION['type'] = "quotemanagement.php";
 	}?>
 <!DOCTYPE html>
 <html>
@@ -45,7 +45,7 @@
 					<textarea id="quote" style="width: 50%; display: inline-block;" class="form-control" name="quote" placeholder="Quote" rows="10"><?php echo $quote['quote'];?></textarea><br><br>
 					<label>Submitter:</label><br>
 					<input id="submitter" style="width: 50%; display: inline-block;" class="form-control" name="submitter" placeholder="Submitter" value="<?php echo $quote['submitter'];?>"><br><br>
-	                <button class="btn btn-success btn-md" type="submit"><span class="glyphicon glyphicon-ok"></span> Approve</button>
+	                <button class="btn btn-success btn-md" type="submit"><span class="glyphicon glyphicon-ok"></span> Save</button>
 				</form>
             </div>
         </div>

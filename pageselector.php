@@ -4,7 +4,7 @@
 	<?php echo $page > 1 ? "</a>" : "";
 		
 		$mysql = getMysql();
-		$pages = $mysql->query('SELECT COUNT(id) AS id FROM quotes WHERE approved=1;')->fetch_assoc()['id']/10;
+		$pages = $mysql->query('SELECT COUNT(id) AS id FROM quotes')->fetch_assoc()['id']/10;
 		$ceiled = ceil($pages);
 		
 		for($i = 1; $i <= $ceiled; $i++)

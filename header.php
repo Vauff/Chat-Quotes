@@ -4,7 +4,7 @@ if($_SESSION['currentHeader'] == 1)
 	<head>
 		<meta charset="UTF-8">
 		<title><?php echo $_SESSION['pageTitle']?></title>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/bootstrap-theme.css">
 		<link rel="stylesheet" href="css/quotes.css">
 	</head><?php

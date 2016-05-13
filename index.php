@@ -21,7 +21,12 @@
             		  require('header.php');?>
             	<?php if(isset($_GET['submitted']) && $_GET['submitted'] == "true"){?>
             		<div class="centered"><font color="green"><span class="glyphicon glyphicon-ok"></span> Thank you for submitting! Your quote will be reviewed as soon as possible.</font></div>
-            	<?php }?>
+            	<?php }
+            		if(isset($_GET['exists']) && $_GET['exists'] == "false")
+            		{
+            			echo '<div class="centered"><font color="red"><span class="glyphicon glyphicon-remove"></span> This quote does not exist!</font></div>';
+            		}
+            		?>
                 <div class="centered"><?php require('pageselector.php');?></div>
                 <br>
                 <?php

@@ -13,11 +13,26 @@
 		$_GET['page'] = 1;
 	}
 	
+	$mysql = getMysql();
 	$id = $_GET['id'];
-	$quote = getMysql()->query("SELECT * FROM quotes WHERE id=".$id)->fetch_assoc();
+	
+	if($mysql->query("SELECT EXISTS(SELECT 1 FROM quotes WHERE id=".$id.") AS id")->fetch_assoc()['id'] == 0)
+	{
+		header("Location: index.php?exists=false");
+		return;
+	}
+	
+	$quote = $mysql->query("SELECT * FROM quotes WHERE id=".$id)->fetch_assoc();
+	
+	if($quote['approved'] == 0)
+	{
+		header("Location: index.php?exists=false");
+		return;
+	}
+	
 	$_SESSION['pageTitle'] = "IRC Quotes: #".$id." - ".$quote['title'];
 	$_SESSION['currentHeader'] = 1;
-	$_SESSION['editType'] = "view";?>
+	$_SESSION['type'] = "view";?>
 <!DOCTYPE html>
 <html>
 	<?php require('header.php');?>
@@ -32,6 +47,7 @@
 	                <?php if(isset($_SESSION['username']) && $_SESSION['username'] == "Vauff")
 	                	  {?>
 		            		<button class="btn btn-info" onclick="location.href='editquote.php?id=<?php echo $id;?>'"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+	               			<button class="btn btn-danger" onclick="location.href='unapprovequote.php?id=<?php echo $id;?>'"><span class="glyphicon glyphicon-remove"></span> Unapprove</button>
 		            <?php }?>
 	                <br><br>
 	                <div class="quote">
@@ -42,5 +58,7 @@
                 </div>
             </div>
         </div>
-    </body>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
 </html>
