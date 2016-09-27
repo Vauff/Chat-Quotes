@@ -3,7 +3,7 @@
 
 	function getMysql()
 	{
-		$mysql = new mysqli("geforcemods.net", "Vauff", getPass(), "ircquotes");
+		$mysql = new mysqli("vauff.me", "Vauff", getPass(), "ircquotes");
 	
 		if($mysql->connect_error)
 		{
