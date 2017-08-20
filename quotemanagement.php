@@ -21,7 +21,11 @@
             <div class="jumbotron">
             	<?php $_SESSION['currentHeader'] = 2;
             		  require('header.php');?>
-            	<?php if(isset($_GET['approved'])){?>
+            	<?php if(isset($_SESSION['edited'])){?>
+            		<div class="centered"><font color="green"><span class="glyphicon glyphicon-ok"></span> Quote edited!</font></div>
+            	<?php $_SESSION['edited'] = null;
+            		  }
+            		  else if(isset($_GET['approved'])){?>
             		<div class="centered"><font color="green"><span class="glyphicon glyphicon-ok"></span> Quote <?php if($_GET['approved'] == "true"){echo "approved";}else if($_GET['approved'] == "false"){echo "unapproved";}?>!</font></div>
             	<?php }?>
                 <br>

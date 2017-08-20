@@ -20,11 +20,11 @@
 	
 	if($_SESSION['type'] == "view")
 	{
-		$_SESSION['type'] = "viewquote.php?id=".$id;
+		$_SESSION['editType'] = "viewquote.php?id=".$id;
 	}
 	else if($_SESSION['type'] == "qman")
 	{
-		$_SESSION['type'] = "quotemanagement.php";
+		$_SESSION['editType'] = "quotemanagement.php";
 	}?>
 <!DOCTYPE html>
 <html>
@@ -60,6 +60,7 @@
 				$.post("approvequote.php", {id: $("#id").val(), title: $("#title").val(), quote: $("#quote").val(), submitter: $("#submitter").val()}, function(data){
 					if(data == true)
 					{
+						<?php $_SESSION['edited'] = true;?>
 						location.href = "quotemanagement.php?approved=true";
 					}
 				});
