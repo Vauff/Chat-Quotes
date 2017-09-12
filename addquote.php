@@ -2,7 +2,7 @@
 	session_start();
 	require('api.php');
 	
-	$_SESSION['pageTitle'] = "IRC Quotes: Add Quote";
+	$_SESSION['pageTitle'] = "Chat Quotes: Add Quote";
 	$_SESSION['currentHeader'] = 1;
 	$_SESSION['submitting'] = "true";
 ?>
@@ -15,10 +15,12 @@
             	<?php $_SESSION['currentHeader'] = 2;
             		  require('header.php');?>
             	<h4><b>You can add a quote using the form below. Your quote will need to be approved by Vauff before it will show up, this generally won't take more than a day, though. Please keep the following rules in mind when submitting:</b></h4><br>
-            	<h4><b>- Use your standard IRC nickname for the nickname option when submitting quotes.<br>
+            	<h4><b>- Use your standard Discord/IRC username for the nickname option when submitting quotes.<br>
             	- Remove any messages from the quote that are an artifiact of another conversation going on at the same time or irrelevant.<br>
             	- Please fix any typos and remove any messages correcting typos.<br>
             	- Choose a title that is relevant to the quote.<br>
+            	- Use IRC format for messages (e.g. &lt;Vauff&gt; hello)<br>
+            	- Only include timestamps if they are relevant to the quote<br>
             	- Make sure your quote is funny :D</b></h4><br>
             	<h4><b>If I find that it is needed, I will edit your quote to be in line with the rules.</b></h4>
             	<hr>

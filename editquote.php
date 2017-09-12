@@ -15,7 +15,7 @@
 	
 	$id = $_GET['id'];
 	$quote = getMysql()->query("SELECT * FROM quotes WHERE id=".$id)->fetch_assoc();
-	$_SESSION['pageTitle'] = "IRC Quotes: Edit quote #".$id;
+	$_SESSION['pageTitle'] = "Chat Quotes: Edit quote #".$id;
 	$_SESSION['currentHeader'] = 1;
 	
 	if($_SESSION['type'] == "view")

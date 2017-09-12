@@ -10,7 +10,7 @@
 	$mysql = getMysql();
 	$mysql->query("DELETE * FROM quotes WHERE id>=46");
 	$mysql->query("ALTER TABLE quotes AUTO_INCREMENT=46");
-	$_SESSION['pageTitle'] = "IRC Quotes: Unapproved quotes";
+	$_SESSION['pageTitle'] = "Chat Quotes: Unapproved quotes";
 	$_SESSION['currentHeader'] = 1;
 	$_SESSION['type'] = "qman";?>
 <!DOCTYPE html>

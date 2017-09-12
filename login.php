@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	require('api.php');
-	$_SESSION['pageTitle'] = "IRC Quotes: Login";
+	$_SESSION['pageTitle'] = "Chat Quotes: Login";
 	$_SESSION['currentHeader'] = 1;
 ?>
 <!DOCTYPE html>

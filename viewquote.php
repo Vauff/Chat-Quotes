@@ -30,7 +30,7 @@
 		return;
 	}
 	
-	$_SESSION['pageTitle'] = "IRC Quotes: #".$id." - ".$quote['title'];
+	$_SESSION['pageTitle'] = "Chat Quotes: #".$id." - ".$quote['title'];
 	$_SESSION['currentHeader'] = 1;
 	$_SESSION['type'] = "view";?>
 <!DOCTYPE html>
