@@ -3,7 +3,7 @@
 
 	function getMysql()
 	{
-		$mysql = new mysqli("vauff.me", "Vauff", getPass(), "ircquotes");
+		$mysql = new mysqli("158.69.59.239", "Vauff", getPass(), "ircquotes");
 	
 		if($mysql->connect_error)
 		{
