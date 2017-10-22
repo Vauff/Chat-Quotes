@@ -4,7 +4,7 @@
 
 	if(!isset($_SESSION['username']))
 	{
-		header("Location: index.php");
+		header("Location: login.php");
 	}
 	
 	if(!isset($_GET['id']))
