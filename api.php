@@ -22,9 +22,4 @@
 		
 		return $quote;
 	}
-	
-	function getHookUrl()
-	{
-		return ""; //add your channel's webhook url here. be sure to suffix it with /slack
-	}
 ?>
