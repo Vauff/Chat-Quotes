@@ -50,23 +50,22 @@
 					if(data == true)
 					{
 						var hookurl = "<?php echo getHookUrl(); ?>";
-						var data = JSON.stringify({
+						var jsonData = JSON.stringify({
 							"username": "Chat Quotes",
 							"icon_url": "",
-							"text": "<@129448521861431296> new chat quote submitted by " + $("#nick").val() + ": " + $("#title").val() + " http://158.69.59.239/quotes/quotemanagement.php"
+							"text": "<@129448521861431296> New chat quote submitted by " + $("#nick").val() + ": " + $("#title").val() + " http://158.69.59.239/quotes/quotemanagement.php"
 						});
-						
-						xhr = new XMLHttpRequest();
-						xhr.open("POST", hookurl, true);
-						xhr.setRequestHeader("Content-type", "application/json");
-						xhr.send(data);
-						xhr.onreadystatechange = function(){
-							if (this.status != 200)
-							{
-								alert(this.responseText);
-							}
-						};
-						
+
+						$.ajax({
+					        type: "POST",
+					        url: hookurl,
+					        dataType: 'json',
+					        async: false,
+					        data: jsonData,
+					        success: function () {
+					        }
+					    });
+					    
 						location.href = "index.php?submitted=true";
 					}
 					else
