@@ -49,6 +49,23 @@
 				$.post("submit.php", {nick: $("#nick").val(), title: $("#title").val(), quote: $("#quote").val()}, function(data){
 					if(data == true)
 					{
+						var hookurl = "<?php echo getHookUrl(); ?>";
+						var jsonData = JSON.stringify({
+							"username": "Chat Quotes",
+							"icon_url": "",
+							"text": "<@129448521861431296> New chat quote submitted by " + $("#nick").val() + ": " + $("#title").val() + " http://158.69.59.239/quotes/quotemanagement.php"
+						});
+
+						$.ajax({
+					        type: "POST",
+					        url: hookurl,
+					        dataType: 'json',
+					        async: false,
+					        data: jsonData,
+					        success: function () {
+					        }
+					    });
+					    
 						location.href = "index.php?submitted=true";
 					}
 					else
