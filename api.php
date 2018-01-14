@@ -28,3 +28,38 @@
 
 		return $quote;
 	}
+
+	function makeClickable($line)
+	{
+	    $result = "";
+	    
+	    $line = str_replace("<br />", " <br> ", $line);
+	    
+	    foreach(explode(" ", $line) as $word)
+	    {
+	        if(startsWith($word, "<br>"))
+	        {
+	            $result .= "<br> ";
+	            continue;
+	        }
+	        
+	        if(contains($word, "https://") || contains($word, "http://") || contains($word, "www."))
+	        {
+	            $word = "<a href='".$word."'>".$word."</a>";
+	        }
+	        
+	        $result .= $word." ";
+	    }
+	    
+	    return trim($result);
+	}
+	
+	function startsWith($haystack, $needle)
+	{
+	    return (substr($haystack, 0, strlen($needle)) === $needle);
+	}
+	
+	function contains($haystack, $needle)
+	{
+	    return strpos($haystack, $needle) !== false;
+	} 

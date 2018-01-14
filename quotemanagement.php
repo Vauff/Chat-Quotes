@@ -49,7 +49,7 @@
                 		<div class="quote">
 	                	<h4><b><font color="337ab7">#<?php echo $id;?> - <?php echo $quote['title'];?></font></b></h4>
                 			<h5><b>Submitter:</b> <?php echo $quote['submitter']?> - <b>Date:</b> <?php echo gmdate('l F jS, Y, g:i A T', $time);?></h5>
-                			<h6><?php echo nl2br(htmlentities($quote['quote'], ENT_COMPAT, "CP1252"))?></h6>
+                			<h6><?php echo makeClickable(nl2br(htmlentities($quote['quote'], ENT_COMPAT, "CP1252")))?></h6>
                 		</div>
 	               		<button class="btn btn-success" onclick="location.href='approvequote.php?id=<?php echo $id;?>'"><span class="glyphicon glyphicon-ok"></span> Approve</button>
 	               		<button class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete"><span class="glyphicon glyphicon-remove"></span> Delete</button>
