@@ -3,8 +3,8 @@
 		<button class="btn btn-info<?php echo $page <= 1 ? " disabled" : "";?>"><span class="glyphicon glyphicon-arrow-left"></span></button>
 	<?php echo $page > 1 ? "</a>" : "";
 		
-		$mysql = getMysql();
-		$pages = $mysql->query('SELECT COUNT(id) AS id FROM quotes')->fetch_assoc()['id']/10;
+		$conn = getDatabase();
+		$pages = $conn->query('SELECT COUNT(id) AS id FROM quotes')->fetch()['id']/10;
 		$ceiled = ceil($pages);
 		
 		for($i = 1; $i <= $ceiled; $i++)

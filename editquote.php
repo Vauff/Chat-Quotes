@@ -6,18 +6,20 @@
 	{
 		header("Location: login.php");
 	}
-	
+
 	if(!isset($_GET['id']))
 	{
 		header("Location: quotemanagement.php");
 		return;
 	}
-	
+
 	$id = $_GET['id'];
-	$quote = getMysql()->query("SELECT * FROM quotes WHERE id=".$id)->fetch_assoc();
+	$getQuote = getDatabase()->prepare('SELECT * FROM quotes WHERE id=:id');
+	$getQuote->execute(['id'=>$id]);
+    $quote = $getQuote->fetch();
 	$_SESSION['pageTitle'] = "Chat Quotes: Edit quote #".$id;
 	$_SESSION['currentHeader'] = 1;
-	
+
 	if($_SESSION['type'] == "view")
 	{
 		$_SESSION['editType'] = "viewquote.php?id=".$id;

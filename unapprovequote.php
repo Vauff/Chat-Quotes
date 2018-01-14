@@ -7,8 +7,8 @@
 	}
 	
 	require("api.php");
-	$mysql = getMysql();
+	$conn = getDatabase();
 
-	$mysql->query("UPDATE quotes SET approved=0 WHERE id=".$mysql->real_escape_string($_GET['id']));
+	$conn->prepare('UPDATE quotes SET approved=0 WHERE id=:id')->execute(['id'=>$_GET['id']]);
 	header("Location: quotemanagement.php?approved=false");
 ?>
