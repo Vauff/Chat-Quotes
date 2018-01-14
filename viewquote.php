@@ -17,7 +17,7 @@
 	$id = $_GET['id'];
 
     $existsQuery = $conn->prepare("SELECT EXISTS(SELECT 1 FROM quotes WHERE id=:id) AS id");
-    $existsQuery->execute(['id'=>$id]);
+    $existsQuery->execute(['id' => $id]);
 
 	if($existsQuery->fetch()['id'] == 0)
 	{
@@ -27,8 +27,9 @@
 
 	$quoteQuery = $conn->prepare("SELECT * FROM quotes WHERE id=:id");
 
-	$quoteQuery->execute(['id'=>$id]);
+	$quoteQuery->execute(['id' => $id]);
 
+	
 	$quote = $quoteQuery->fetch();
 
 	if($quote['approved'] == 0)

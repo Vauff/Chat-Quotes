@@ -4,7 +4,7 @@
 	<?php echo $page > 1 ? "</a>" : "";
 		
 		$conn = getDatabase();
-		$pages = $conn->query('SELECT COUNT(id) AS id FROM quotes')->fetch()['id']/10;
+		$pages = $conn->query('SELECT COUNT(id) AS id FROM quotes')->fetch()['id'] / 10;
 		$ceiled = ceil($pages);
 		
 		for($i = 1; $i <= $ceiled; $i++)

@@ -33,7 +33,7 @@
                 	$firstQuoteID = 10 * ($pages - $page + 1);
                 	$secondQuoteID = $firstQuoteID > 9 ? $firstQuoteID - 9 : 0;
                 	$quotes = $conn->prepare('SELECT * FROM quotes WHERE id>=:secondQuoteID AND id<=:firstQuoteID AND approved=1 ORDER BY id DESC');
-                	$quotes->execute(['secondQuoteID' => $secondQuoteID, 'firstQuoteID'=> $firstQuoteID]);
+                	$quotes->execute(['secondQuoteID' => $secondQuoteID, 'firstQuoteID' => $firstQuoteID]);
 
                 	while($quote = $quotes->fetch())
                 	{

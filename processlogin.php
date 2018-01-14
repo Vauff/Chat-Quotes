@@ -10,6 +10,7 @@
 	{
 		$username = $_GET['username'];
 		$password = hash("sha256", $_GET['password']);
+		
 		if($password == getSha())
 		{	
 			$_SESSION['username'] = $_GET['username'];

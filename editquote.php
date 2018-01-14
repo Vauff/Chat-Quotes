@@ -15,7 +15,7 @@
 
 	$id = $_GET['id'];
 	$getQuote = getDatabase()->prepare('SELECT * FROM quotes WHERE id=:id');
-	$getQuote->execute(['id'=>$id]);
+	$getQuote->execute(['id' => $id]);
     $quote = $getQuote->fetch();
 	$_SESSION['pageTitle'] = "Chat Quotes: Edit quote #".$id;
 	$_SESSION['currentHeader'] = 1;

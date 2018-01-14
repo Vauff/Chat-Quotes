@@ -5,10 +5,13 @@
 	{
 		$dsn = 'mysql:host=158.69.59.239;dbname=ircquotes;charset=utf8';
 
-        try {
+        try
+        {
             $conn = new PDO($dsn,'Vauff', getPass());
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
+        }
+        catch (PDOException $e)
+        {
             echo $e;
             return false;
         }
