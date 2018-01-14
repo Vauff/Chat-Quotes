@@ -3,11 +3,9 @@
 
 	function getDatabase()
 	{
-		$dsn = 'mysql:host=158.69.59.239;dbname=ircquotes;charset=utf8';
-
         try
-        {
-            $conn = new PDO($dsn,'Vauff', getPass());
+       {
+            $conn = new PDO('mysql:host=158.69.59.239;dbname=ircquotes;charset=utf8mb4','Vauff', getPass());
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch (PDOException $e)
