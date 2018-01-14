@@ -13,7 +13,7 @@
 	// Not really using prepared statements in this file because we're only working with server-generated ids and the user is logged in.
 	$conn->query('DELETE FROM quotes WHERE id='.$id);
 
-    $ainc = $conn->query("SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='quotes' AND TABLE_NAME='quotes'")->fetch()['AUTO_INCREMENT'];
+	$ainc = $conn->query("SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='ircquotes' AND TABLE_NAME='quotes'")->fetch()['AUTO_INCREMENT'];
     $conn->query("ALTER TABLE quotes AUTO_INCREMENT=".($ainc - 1));
 
 
