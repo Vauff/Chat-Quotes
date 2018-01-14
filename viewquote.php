@@ -7,29 +7,36 @@
 		header("Location: index.php");
 		return;
 	}
-	
+
 	if(!isset($_GET['page']))
 	{
 		$_GET['page'] = 1;
 	}
-	
-	$mysql = getMysql();
+
+	$conn = getDatabase();
 	$id = $_GET['id'];
-	
-	if($mysql->query("SELECT EXISTS(SELECT 1 FROM quotes WHERE id=".$id.") AS id")->fetch_assoc()['id'] == 0)
+
+    $existsQuery = $conn->prepare("SELECT EXISTS(SELECT 1 FROM quotes WHERE id=:id) AS id");
+    $existsQuery->execute(['id'=>$id]);
+
+	if($existsQuery->fetch()['id'] == 0)
 	{
 		header("Location: index.php?exists=false");
 		return;
 	}
-	
-	$quote = $mysql->query("SELECT * FROM quotes WHERE id=".$id)->fetch_assoc();
-	
+
+	$quoteQuery = $conn->prepare("SELECT * FROM quotes WHERE id=:id");
+
+	$quoteQuery->execute(['id'=>$id]);
+
+	$quote = $quoteQuery->fetch();
+
 	if($quote['approved'] == 0)
 	{
 		header("Location: index.php?exists=false");
 		return;
 	}
-	
+
 	$_SESSION['pageTitle'] = "Chat Quotes: #".$id." - ".$quote['title'];
 	$_SESSION['currentHeader'] = 1;
 	$_SESSION['type'] = "view";?>
@@ -41,7 +48,7 @@
             <div class="jumbotron">
             	<?php $_SESSION['currentHeader'] = 2;
             		  require('header.php');?>
-               	<?php 
+               	<?php
 	                $time = $quote['time'];?>
 		            <button class="btn btn-warning btn-md" onclick="location.href='index.php<?php echo $_GET['page'] == 1 ? "" : "?page=".$_GET['page']?>'"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
 	                <?php if(isset($_SESSION['username']) && $_SESSION['username'] == "Vauff")

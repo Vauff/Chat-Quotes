@@ -1,12 +1,12 @@
-<?php 
+<?php
 	session_start();
 	require('api.php');
-	
+
 	if(!isset($_GET['page']))
 	{
 		$_GET['page'] = 1;
 	}
-	
+
 	$page = $_GET['page'];
 	$_SESSION['pageTitle'] = "Chat Quotes: Page #".$page;
 	$_SESSION['currentHeader'] = 1;
@@ -32,9 +32,10 @@
                 <?php
                 	$firstQuoteID = 10 * ($pages - $page + 1);
                 	$secondQuoteID = $firstQuoteID > 9 ? $firstQuoteID - 9 : 0;
-                	$quotes = $mysql->query("SELECT * FROM quotes WHERE id>=".$secondQuoteID." AND id<=".$firstQuoteID." AND approved=1 ORDER BY id DESC");
-                	
-                	while($quote = $quotes->fetch_assoc())
+                	$quotes = $conn->prepare('SELECT * FROM quotes WHERE id>=:secondQuoteID AND id<=:firstQuoteID AND approved=1 ORDER BY id DESC');
+                	$quotes->execute(['secondQuoteID' => $secondQuoteID, 'firstQuoteID'=> $firstQuoteID]);
+
+                	while($quote = $quotes->fetch())
                 	{
                 		$id = $quote['id'];
                 		$time = $quote['time'];?>

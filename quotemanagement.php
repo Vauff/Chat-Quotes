@@ -27,22 +27,22 @@
             	<?php }?>
                 <br>
                 <?php
-                	$mysql = getMysql();
+                	$conn = getDatabase();
                 	
                 	if(isset($_GET['deleted']) && $_GET['deleted'] == "true")
                 	{
                 		echo '<div class="centered"><font color="green"><span class="glyphicon glyphicon-ok"></span> Quote deleted!</font></div>';
                 	}
                 	
-                	if($mysql->query("SELECT COUNT(id) AS id FROM quotes WHERE approved=0 ORDER BY id ASC")->fetch_assoc()['id'] == 0)
+                	if($conn->query("SELECT COUNT(id) AS id FROM quotes WHERE approved=0 ORDER BY id ASC")->fetch()['id'] == 0)
                 	{
                 		echo '<div class="centered"><font color="red"><span class="glyphicon glyphicon-remove"></span> There are no pending quotes!</font></div>';
                 		return;
                 	}
                 	
-                	$quotes = $mysql->query("SELECT * FROM quotes WHERE approved=0 ORDER BY id ASC");
+                	$quotes = $conn->query("SELECT * FROM quotes WHERE approved=0 ORDER BY id ASC");
                 	
-                	while($quote = $quotes->fetch_assoc())
+                	while($quote = $quotes->fetch())
                 	{
                 		$id = $quote['id'];
                 		$time = $quote['time'];?>
