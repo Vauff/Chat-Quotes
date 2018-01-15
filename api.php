@@ -35,15 +35,40 @@
 	    
 	    foreach(explode(" ", $line) as $word)
 	    {
-	        if(startsWith($word, "<br>"))
-	        {
-	            $result .= "<br> ";
-	            continue;
-	        }
-	        
 	        if(contains($word, "https://") || contains($word, "http://") || contains($word, "www."))
 	        {
-	            $word = "<a href='".$word."'>".$word."</a>";
+	            $croppedLink = "";
+	            $carry = "";
+	            
+	            if(startsWith($word, "<br>"))
+	            {
+	                $result .= "<br> ";
+	                continue;
+	            }
+	            
+	            if(endsWith($word, ")"))
+	            {
+	                $carry = ")";
+	            }
+	            else if(endsWith($word, "]"))
+	            {
+	                $carry = "]";
+	            }
+	            else if(endsWith($word, "}"))
+	            {
+	                $carry = "}";
+	            }
+	            else if(endsWith($word, ">"))
+	            {
+	                $carry = ">";
+	            }
+	            
+	            if($carry !== "")
+	            {
+	                $croppedLink = substr($word, 0, strlen($word) - 1);
+	            }
+	            
+	            $word = "<a href='".($croppedLink !== "" ? $croppedLink : $word)."'>".($croppedLink !== "" ? $croppedLink : $word)."</a>".$carry;
 	        }
 	        
 	        $result .= $word." ";
@@ -55,6 +80,13 @@
 	function startsWith($haystack, $needle)
 	{
 	    return (substr($haystack, 0, strlen($needle)) === $needle);
+	}
+	
+	function endsWith($haystack, $needle)
+	{
+	    $length = strlen($needle);
+	    
+	    return $length === 0 || (substr($haystack, -$length) === $needle);
 	}
 	
 	function contains($haystack, $needle)
