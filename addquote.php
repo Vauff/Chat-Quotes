@@ -56,15 +56,15 @@
 							"text": "<@129448521861431296> New chat quote submitted by " + $("#nick").val() + ": " + $("#title").val() + " http://158.69.59.239/quotes/quotemanagement.php"
 						});
 
-// 						$.ajax({
-// 					        type: "POST",
-// 					        url: hookurl,
-// 					        dataType: 'json',
-// 					        async: false,
-// 					        data: jsonData,
-// 					        success: function () {
-// 					        }
-// 					    });
+						$.ajax({
+					        type: "POST",
+					        url: hookurl,
+					        dataType: 'json',
+					        async: false,
+					        data: jsonData,
+					        success: function () {
+					        }
+					    });
 					    
 						location.href = "index.php?submitted=true";
 					}
