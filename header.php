@@ -3,6 +3,7 @@ if($_SESSION['currentHeader'] == 1)
 {?>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="robots" content="noindex" />
 		<title><?php echo $_SESSION['pageTitle']?></title>
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/bootstrap-theme.css">

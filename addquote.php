@@ -49,7 +49,8 @@
 				$.post("submit.php", {nick: $("#nick").val(), title: $("#title").val(), quote: $("#quote").val()}, function(data){
 					if(data == true)
 					{
-						var hookurl = "<?php echo getHookUrl(); ?>";
+						//currently disabled since it can be abused client side, needs a server side solution
+						/*var hookurl = "<?php /* echo getHookUrl(); */ ?>";
 						var jsonData = JSON.stringify({
 							"username": "Chat Quotes",
 							"icon_url": "",
@@ -57,15 +58,15 @@
 						});
 
 						$.ajax({
-					        type: "POST",
-					        url: hookurl,
-					        dataType: 'json',
-					        async: false,
-					        data: jsonData,
-					        success: function () {
-					        }
-					    });
-					    
+							type: "POST",
+							url: hookurl,
+							dataType: 'json',
+							async: false,
+							data: jsonData,
+							success: function () {
+							}
+						});*/
+
 						location.href = "index.php?submitted=true";
 					}
 					else
