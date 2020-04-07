@@ -42,11 +42,11 @@
 	            <form id="form">
             		<label for="id">ID:</label><label style="padding-left: 30px;" for="title">Title:</label><br>
 					<input id="id" style="width: 44px; display: inline-block;" class="form-control" name="id" type="text" placeholder="ID" disabled="disabled" value="<?php echo $quote['id']?>">
-					<input id="title" style="width: 45.25%; display: inline-block;" class="form-control" name="title" type="text" placeholder="Title" value="<?php echo $quote['title']?>"><br><br>
+					<input id="title" style="width: 45.25%; display: inline-block;" class="form-control" name="title" type="text" placeholder="Title" value="<?php echo htmlspecialchars($quote['title'])?>"><br><br>
 					<label>Quote:</label><br>
-					<textarea id="quote" style="width: 50%; display: inline-block;" class="form-control" name="quote" placeholder="Quote" rows="10"><?php echo $quote['quote'];?></textarea><br><br>
+					<textarea id="quote" style="width: 50%; display: inline-block;" class="form-control" name="quote" placeholder="Quote" rows="10"><?php echo htmlspecialchars($quote['quote']);?></textarea><br><br>
 					<label>Submitter:</label><br>
-					<input id="submitter" style="width: 50%; display: inline-block;" class="form-control" name="submitter" placeholder="Submitter" value="<?php echo $quote['submitter'];?>"><br><br>
+					<input id="submitter" style="width: 50%; display: inline-block;" class="form-control" name="submitter" placeholder="Submitter" value="<?php echo htmlspecialchars($quote['submitter']);?>"><br><br>
 	                <button class="btn btn-success btn-md" type="submit"><span class="glyphicon glyphicon-ok"></span> Save</button>
 				</form>
             </div>
