@@ -59,8 +59,8 @@
 		            <?php }?>
 	                <br><br>
 	                <div class="quote">
-	                	<h4><b><font color="337ab7">#<?php echo $id;?> - <?php echo $quote['title'];?></font></b></h4>
-	                	<h5><b>Submitter:</b> <?php echo $quote['submitter']?> - <b>Date:</b> <?php echo gmdate('l F jS, Y, g:i A T', $time);?></h5>
+	                	<h4><b><font color="337ab7">#<?php echo $id;?> - <?php echo htmlspecialchars($quote['title']); ?></font></b></h4>
+	                	<h5><b>Submitter:</b> <?php echo htmlspecialchars($quote['submitter']); ?> - <b>Date:</b> <?php echo gmdate('l F jS, Y, g:i A T', $time);?></h5>
 	                	<h6><?php echo makeClickable(nl2br(htmlspecialchars($quote['quote'], ENT_COMPAT, "utf-8")));?>
 	                </h6>
                 </div>

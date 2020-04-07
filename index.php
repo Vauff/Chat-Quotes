@@ -40,8 +40,8 @@
                 		$id = $quote['id'];
                 		$time = $quote['time'];?>
                 		<div class="quote">
-                			<h4><a href="viewquote.php?id=<?php echo $page == 1 ? $id : $id."&page=".$page;?>"><b>#<?php echo $id;?> - <?php echo $quote['title'];?></b></a></h4>
-                			<h5><b>Submitter:</b> <?php echo $quote['submitter']?> - <b>Date:</b> <?php echo gmdate('l F jS, Y, g:i A T', $time);?></h5>
+                			<h4><a href="viewquote.php?id=<?php echo $page == 1 ? $id : $id."&page=".$page;?>"><b>#<?php echo $id;?> - <?php echo htmlspecialchars($quote['title']);?></b></a></h4>
+                			<h5><b>Submitter:</b> <?php echo htmlspecialchars($quote['submitter'])?> - <b>Date:</b> <?php echo gmdate('l F jS, Y, g:i A T', $time);?></h5>
                 			<h6><?php echo makeClickable(nl2br(htmlentities($quote['quote'], ENT_COMPAT, "utf-8")))?></h6>
                 		</div>
                 		<br>
