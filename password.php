@@ -1,10 +1,25 @@
 <?php
-	function getPass()
+	function getDatabaseHost()
+	{
+		return "";
+	}
+	
+	function getDatabaseName()
+	{
+		return "";
+	}
+	
+	function getDatabaseUsername()
+	{
+		return "";
+	}
+	
+	function getDatabasePassword()
 	{
 		return "";
 	}
 
-	function getSha()
+	function getPasswordSha()
 	{
 		return "";
 	}

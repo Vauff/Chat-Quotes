@@ -11,7 +11,7 @@
 		$username = $_GET['username'];
 		$password = hash("sha256", $_GET['password']);
 		
-		if($password == getSha())
+		if($password == getPasswordSha())
 		{	
 			$_SESSION['username'] = $_GET['username'];
 			header("Location: quotemanagement.php");

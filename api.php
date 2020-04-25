@@ -5,7 +5,7 @@
 	{
         try
        {
-            $conn = new PDO('mysql:host=158.69.59.239;dbname=ircquotes;charset=utf8mb4','Vauff', getPass());
+            $conn = new PDO('mysql:host=' . getDatabaseHost() . ';dbname=' . getDatabaseName() . ';charset=utf8mb4', getDatabaseUsername(), getDatabasePassword());
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch (PDOException $e)
